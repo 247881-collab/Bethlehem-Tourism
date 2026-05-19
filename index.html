@@ -43,7 +43,16 @@
             margin: 0;
         }
         </style>
-        <title></title>
+        <title>Bethlehem Tourism Map</title>
+
+        <script>
+            window.addEventListener('error', function(e) {
+                if (e.target.tagName === 'IMG' && e.target.src.includes('highway=bus_stop.svg')) {
+                    // تحويل الرابط المشبوه إلى صيغة مشفرة تفهمها السيرفرات تلقائياً (%3D تعني علامة =)
+                    e.target.src = e.target.src.replace('highway=bus_stop.svg', 'highway%3Dbus_stop.svg');
+                }
+            }, true);
+        </script>
     </head>
     <body>
         <div id="map">
